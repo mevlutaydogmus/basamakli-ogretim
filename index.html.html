@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basamaklı Öğretim Modeli | Kapsamlı Rehber</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .fade-in { animation: fadeIn 0.4s ease-out forwards; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .tab-active { @apply bg-indigo-600 text-white shadow-lg border-indigo-600 ring-2 ring-indigo-200 ring-offset-2; }
+        .tab-inactive { @apply bg-white text-slate-600 border-slate-200 hover:bg-slate-50 hover:border-indigo-300; }
+        
+        /* Pyramid Step Widths */
+        .step-a { width: 80%; margin: 0 auto; }
+        .step-b { width: 90%; margin: 0 auto; }
+        .step-c { width: 100%; margin: 0 auto; }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        indigo: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#312e81',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-indigo-200 selection:text-indigo-900 overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 transition-all duration-300 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <div class="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-200">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    </div>
+                    <span class="font-bold text-2xl tracking-tight text-slate-900">Eğitim<span class="text-indigo-600">Genie</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#nedir" class="text-slate-600 hover:text-indigo-600 font-medium transition-colors">Model Nedir?</a>
+                    <a href="#ilkeler" class="text-slate-600 hover:text-indigo-600 font-medium transition-colors">Temel İlkeler</a>
+                    <a href="#basamaklar" class="text-slate-600 hover:text-indigo-600 font-medium transition-colors">C-B-A Basamakları</a>
+                    <a href="#surec" class="text-slate-600 hover:text-indigo-600 font-medium transition-colors">5 Aşamalı Süreç</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-slate-900 focus:outline-none bg-slate-100 p-2 rounded-lg">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 absolute w-full shadow-lg">
+            <a href="#nedir" class="block px-6 py-4 text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 font-medium border-b border-slate-50">Model Nedir?</a>
+            <a href="#ilkeler" class="block px-6 py-4 text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 font-medium border-b border-slate-50">Temel İlkeler</a>
+            <a href="#basamaklar" class="block px-6 py-4 text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 font-medium border-b border-slate-50">C-B-A Basamakları</a>
+            <a href="#surec" class="block px-6 py-4 text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 font-medium">5 Aşamalı Süreç</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="nedir" class="pt-32 pb-24 lg:pt-40 lg:pb-32 bg-slate-900 relative overflow-hidden">
+        <!-- Abstract Background Shapes -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-indigo-600/20 blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-blue-500/20 blur-3xl"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <span class="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-indigo-500/10 text-indigo-300 text-sm font-semibold mb-6 border border-indigo-500/20">
+                <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span> Öğrenci Merkezli Yaklaşım
+            </span>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight mb-8 leading-tight">
+                Basamaklı <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-blue-400">Öğretim Modeli</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-slate-300 font-light mb-10 leading-relaxed">
+                Nunley tarafından geliştirilen, bireysel farklılıkları merkeze alan ve öğrencilerin basitten karmaşığa doğru <strong class="text-white">kendi seçtikleri görevlerle</strong> Bloom Taksonomisi'nde zirveye tırmandığı çağdaş eğitim modeli.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#basamaklar" class="px-8 py-4 border border-transparent text-base font-bold rounded-xl text-indigo-900 bg-white hover:bg-indigo-50 transition-all shadow-lg hover:shadow-indigo-500/30 transform hover:-translate-y-1">
+                    Basamakları Keşfet
+                </a>
+                <a href="#ilkeler" class="px-8 py-4 border border-slate-700 text-base font-bold rounded-xl text-white hover:bg-slate-800 transition-all">
+                    Kuralları İncele
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Exam Tip Highlight -->
+    <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-20">
+        <div class="bg-gradient-to-r from-amber-500 to-orange-500 rounded-2xl p-1 shadow-2xl transform hover:-translate-y-1 transition-transform duration-300">
+            <div class="bg-white rounded-xl p-6 sm:p-8 flex flex-col md:flex-row items-center gap-6">
+                <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center shrink-0">
+                    <svg class="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">KPSS Altın Kuralı!</h3>
+                    <p class="text-slate-600">Eğer soruda sürecin <strong>"basitten karmaşığa, aşamalı ve hiyerarşik"</strong> ilerlediği anlatılıyor VE öğrencilerin <strong>"görev seçimi yaptığı"</strong> vurgulanıyorsa, cevap kesinlikle <em>Basamaklı Öğretim Modeli</em>'dir. Tam öğrenme veya programlı öğretimde öğrenci görev seçemez!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fundamental Principles (Cards) -->
+    <section id="ilkeler" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-900">Sistemin Temel Kuralları</h2>
+                <div class="w-20 h-1.5 bg-indigo-600 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-xl hover:border-indigo-200 transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Görev Seçim Özgürlüğü</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Öğretmen her basamakta farklı zorluk ve puanlara sahip birden fazla etkinlik sunar. Öğrenci kendi ilgi, yetenek ve seviyesine en uygun olan görevi <strong>özgürce seçer</strong>.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-xl hover:border-indigo-200 transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Zorunlu İlerleme (C → B → A)</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Öğrenci istediği görevi seçebilir ama <strong>istediği basamaktan başlayamaz!</strong> Herkes en alt temel basamak olan C'den başlamak zorundadır. Görevi başaran bir üste geçer.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-xl hover:border-indigo-200 transition-all duration-300 group">
+                    <div class="w-14 h-14 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Artan Karmaşıklık & Puan</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Aşağıdan yukarıya çıkıldıkça Bloom Taksonomisi'ne paralel olarak zihinsel beceriler zorlaşır. Görevler karmaşıklaşır, ancak elde edilecek <strong>puanın getirisi yükselir</strong>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Pyramid Section -->
+    <section id="basamaklar" class="py-24 bg-white border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-900">Etkileşimli Basamak Hiyerarşisi</h2>
+                <div class="w-20 h-1.5 bg-indigo-600 mx-auto mt-4 rounded-full"></div>
+                <p class="mt-4 text-lg text-slate-600">Her bir basamağın Bloom Taksonomisi'ndeki yerini görmek için tıklayın.</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-16 items-center">
+                <!-- Pyramid Controls (Left) -->
+                <div class="w-full lg:w-5/12 flex flex-col gap-3">
+                    
+                    <!-- A Level Button -->
+                    <button onclick="switchLevel('A')" id="btn-A" class="step-a tab-inactive relative p-5 rounded-2xl border-2 text-center transition-all duration-300 group transform hover:-translate-y-1">
+                        <span class="block text-2xl font-black mb-1">A Basamağı</span>
+                        <span class="block text-sm opacity-80 font-medium">Zirve Düzey</span>
+                    </button>
+                    
+                    <!-- B Level Button -->
+                    <button onclick="switchLevel('B')" id="btn-B" class="step-b tab-inactive relative p-5 rounded-2xl border-2 text-center transition-all duration-300 group transform hover:-translate-y-1">
+                        <span class="block text-2xl font-black mb-1">B Basamağı</span>
+                        <span class="block text-sm opacity-80 font-medium">Orta Düzey</span>
+                    </button>
+
+                    <!-- C Level Button (Active by default) -->
+                    <button onclick="switchLevel('C')" id="btn-C" class="step-c tab-active relative p-5 rounded-2xl border-2 text-center transition-all duration-300 group transform hover:-translate-y-1">
+                        <span class="block text-2xl font-black mb-1">C Basamağı</span>
+                        <span class="block text-sm opacity-80 font-medium">Temel Zemin (Başlangıç)</span>
+                    </button>
+                </div>
+
+                <!-- Content Panel (Right) -->
+                <div class="w-full lg:w-7/12 bg-slate-50 rounded-3xl p-8 lg:p-12 shadow-inner border border-slate-200 min-h-[450px] relative overflow-hidden flex items-center">
+                    
+                    <!-- Watermark -->
+                    <svg class="absolute -right-10 -bottom-10 w-64 h-64 text-slate-200 opacity-50 pointer-events-none" fill="currentColor" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0v6"/></svg>
+
+                    <!-- C Content -->
+                    <div id="content-C" class="fade-in w-full relative z-10">
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100 text-blue-700 font-bold text-sm mb-6 border border-blue-200">
+                            <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span> Bloom: Bilgi & Kavrama
+                        </div>
+                        <h3 class="text-3xl font-extrabold text-slate-900 mb-4">C Basamağı: Temel Bilgi</h3>
+                        <p class="text-lg text-slate-700 mb-8 leading-relaxed">Öğrencinin konuya ilişkin temel bilgileri edindiği, anladığı ve hazırlık yaptığı en alt basamaktır. Tüm öğrenciler öğrenmeye <strong>zorunlu olarak buradan başlar.</strong></p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                                <h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2"><svg class="w-5 h-5 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Etkinlik Örnekleri</h4>
+                                <ul class="text-slate-600 text-sm space-y-2.5">
+                                    <li class="flex items-start gap-2"><span class="text-blue-500 font-bold">•</span> Saymak, sıralamak, eşleştirmek</li>
+                                    <li class="flex items-start gap-2"><span class="text-blue-500 font-bold">•</span> Tanımlamak, açıklamak</li>
+                                    <li class="flex items-start gap-2"><span class="text-blue-500 font-bold">•</span> Kendi cümleleriyle anlatmak</li>
+                                    <li class="flex items-start gap-2"><span class="text-blue-500 font-bold">•</span> Örnek vermek, başlık bulmak</li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                                <h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2"><svg class="w-5 h-5 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Puan Özelliği</h4>
+                                <p class="text-slate-600 text-sm leading-relaxed">Görevlerin puan getirisi düşüktür (Örn: 5-10 Puan). Ancak en çok görevin yerine getirildiği ve toplam puanın büyük kısmının (yaklaşık %65) toplandığı basamaktır.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- B Content -->
+                    <div id="content-B" class="hidden fade-in w-full relative z-10">
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-100 text-indigo-700 font-bold text-sm mb-6 border border-indigo-200">
+                            <span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span> Bloom: Uygulama
+                        </div>
+                        <h3 class="text-3xl font-extrabold text-slate-900 mb-4">B Basamağı: Bilgiyi Transfer</h3>
+                        <p class="text-lg text-slate-700 mb-8 leading-relaxed">C basamağında edinilen teorik bilgilerin pratiğe döküldüğü, kullanıldığı ve farklı sorunların çözümüne aktarıldığı uygulama aşamasıdır.</p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                                <h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2"><svg class="w-5 h-5 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg> Etkinlik Örnekleri</h4>
+                                <ul class="text-slate-600 text-sm space-y-2.5">
+                                    <li class="flex items-start gap-2"><span class="text-indigo-500 font-bold">•</span> Deney yapmak, problem çözmek</li>
+                                    <li class="flex items-start gap-2"><span class="text-indigo-500 font-bold">•</span> Öğrenilen formülü kullanmak</li>
+                                    <li class="flex items-start gap-2"><span class="text-indigo-500 font-bold">•</span> Bilgiyi yeni duruma uygulamak</li>
+                                    <li class="flex items-start gap-2"><span class="text-indigo-500 font-bold">•</span> <em>Yansıtıcı düşünme</em> ilk kez görülür.</li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                                <h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2"><svg class="w-5 h-5 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Puan Özelliği</h4>
+                                <p class="text-slate-600 text-sm leading-relaxed">Görev puanları C'ye göre daha yüksektir (Örn: 15 Puan). Bilgiyi transfer etme ve işe koşma becerisi ölçüldüğü için görevlerin zorluğu artmıştır.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- A Content -->
+                    <div id="content-A" class="hidden fade-in w-full relative z-10">
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-100 text-purple-700 font-bold text-sm mb-6 border border-purple-200">
+                            <span class="w-2.5 h-2.5 rounded-full bg-purple-600"></span> Bloom: Analiz, Sentez, Değerlendirme
+                        </div>
+                        <h3 class="text-3xl font-extrabold text-slate-900 mb-4">A Basamağı: Üst Düzey Düşünme</h3>
+                        <p class="text-lg text-slate-700 mb-8 leading-relaxed">Öğrencinin analitik, eleştirel ve yaratıcı düşünme becerilerini kullanarak özgün ürünler ortaya koyduğu ve sonuçları yargıladığı <strong>zirve noktasıdır.</strong></p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                                <h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2"><svg class="w-5 h-5 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg> Etkinlik Örnekleri</h4>
+                                <ul class="text-slate-600 text-sm space-y-2.5">
+                                    <li class="flex items-start gap-2"><span class="text-purple-500 font-bold">•</span> Makale, şiir, öykü yazmak (Sentez)</li>
+                                    <li class="flex items-start gap-2"><span class="text-purple-500 font-bold">•</span> Neden-sonuç bağı kurmak (Analiz)</li>
+                                    <li class="flex items-start gap-2"><span class="text-purple-500 font-bold">•</span> Ölçütle karşılaştırıp karar vermek</li>
+                                    <li class="flex items-start gap-2"><span class="text-purple-500 font-bold">•</span> Eleştirel ve analitik düşünmek</li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                                <h4 class="font-bold text-slate-900 mb-3 flex items-center gap-2"><svg class="w-5 h-5 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Puan Özelliği</h4>
+                                <p class="text-slate-600 text-sm leading-relaxed">Görevin zorluk derecesi ve karmaşıklığı en üst seviyededir. Dolayısıyla elde edilecek tekil puan miktarı en yüksektir (Örn: 20-25 Puan).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5 Stage Process Timeline -->
+    <section id="surec" class="py-24 bg-slate-900 relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==')] opacity-30"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-20">
+                <h2 class="text-3xl font-bold text-white">5 Aşamalı Uygulama Süreci</h2>
+                <div class="w-20 h-1.5 bg-indigo-500 mx-auto mt-4 rounded-full"></div>
+                <p class="mt-4 text-lg text-slate-400">Model 3 ana basamaktan (C, B, A) oluşsa da, uygulamanın tamamı 5 aşamada planlanır ve yürütülür.</p>
+            </div>
+
+            <div class="relative max-w-4xl mx-auto">
+                <!-- Vertical Line -->
+                <div class="absolute left-6 md:left-1/2 top-0 bottom-0 w-1 bg-slate-700 transform md:-translate-x-1/2 rounded-full"></div>
+                
+                <!-- Timeline Items -->
+                <div class="space-y-12">
+                    
+                    <!-- Stage 1 -->
+                    <div class="relative flex flex-col md:flex-row items-start md:items-center md:justify-between group">
+                        <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full border-4 border-slate-900 bg-indigo-500 text-white font-bold text-lg z-10 shadow-lg shadow-indigo-500/50">1</div>
+                        <div class="ml-16 md:ml-0 md:w-[calc(50%-3rem)] bg-slate-800 p-6 rounded-2xl border border-slate-700 shadow-xl group-hover:-translate-y-1 transition-transform duration-300">
+                            <span class="text-indigo-400 text-sm font-bold uppercase tracking-wider">Başlangıç</span>
+                            <h4 class="text-xl font-bold text-white mt-1 mb-2">Hazırlık ve Görev Seçimi</h4>
+                            <p class="text-slate-300 text-sm leading-relaxed">Öğretmen C, B ve A basamakları için görev listelerini ve puanları hazırlar. Öğrenci ilk aşamada kendi düzeyine uygun görevleri <strong>seçer</strong>. (Henüz icraat yoktur).</p>
+                        </div>
+                        <div class="hidden md:block md:w-[calc(50%-3rem)]"></div>
+                    </div>
+
+                    <!-- Stage 2 -->
+                    <div class="relative flex flex-col md:flex-row-reverse items-start md:items-center md:justify-between group">
+                        <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full border-4 border-slate-900 bg-blue-500 text-white font-bold text-lg z-10 shadow-lg shadow-blue-500/50">2</div>
+                        <div class="ml-16 md:ml-0 md:w-[calc(50%-3rem)] bg-slate-800 p-6 rounded-2xl border border-slate-700 shadow-xl group-hover:-translate-y-1 transition-transform duration-300">
+                            <span class="text-blue-400 text-sm font-bold uppercase tracking-wider">C Basamağı İcrası</span>
+                            <h4 class="text-xl font-bold text-white mt-1 mb-2">Bilgi ve Kavrama</h4>
+                            <p class="text-slate-300 text-sm leading-relaxed">Birinci aşamada seçilen C basamağı görevleri fiilen <strong>yerine getirilir</strong>. Öğrenci okur, araştırır, temel bilgileri ezberler/kavrar ve temel puanını toplar.</p>
+                        </div>
+                        <div class="hidden md:block md:w-[calc(50%-3rem)]"></div>
+                    </div>
+
+                    <!-- Stage 3 -->
+                    <div class="relative flex flex-col md:flex-row items-start md:items-center md:justify-between group">
+                        <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full border-4 border-slate-900 bg-teal-500 text-white font-bold text-lg z-10 shadow-lg shadow-teal-500/50">3</div>
+                        <div class="ml-16 md:ml-0 md:w-[calc(50%-3rem)] bg-slate-800 p-6 rounded-2xl border border-slate-700 shadow-xl group-hover:-translate-y-1 transition-transform duration-300">
+                            <span class="text-teal-400 text-sm font-bold uppercase tracking-wider">B Basamağı İcrası</span>
+                            <h4 class="text-xl font-bold text-white mt-1 mb-2">Uygulama ve Transfer</h4>
+                            <p class="text-slate-300 text-sm leading-relaxed">C basamağını başaran öğrenci, B seviyesine geçer. Seçtiği uygulamaya dayalı problemleri çözer, deney yapar. Edinilen teorik bilgiler <strong>pratiğe dökülür</strong>.</p>
+                        </div>
+                        <div class="hidden md:block md:w-[calc(50%-3rem)]"></div>
+                    </div>
+
+                    <!-- Stage 4 -->
+                    <div class="relative flex flex-col md:flex-row-reverse items-start md:items-center md:justify-between group">
+                        <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full border-4 border-slate-900 bg-purple-500 text-white font-bold text-lg z-10 shadow-lg shadow-purple-500/50">4</div>
+                        <div class="ml-16 md:ml-0 md:w-[calc(50%-3rem)] bg-slate-800 p-6 rounded-2xl border border-slate-700 shadow-xl group-hover:-translate-y-1 transition-transform duration-300">
+                            <span class="text-purple-400 text-sm font-bold uppercase tracking-wider">A Basamağı İcrası</span>
+                            <h4 class="text-xl font-bold text-white mt-1 mb-2">Üst Düzey Düşünme</h4>
+                            <p class="text-slate-300 text-sm leading-relaxed">A seviyesine geçen öğrenci, analiz, sentez ve değerlendirme gerektiren zor görevleri yapar. Özgün ürünler burada <strong>ortaya çıkarılır</strong>.</p>
+                        </div>
+                        <div class="hidden md:block md:w-[calc(50%-3rem)]"></div>
+                    </div>
+
+                    <!-- Stage 5 -->
+                    <div class="relative flex flex-col md:flex-row items-start md:items-center md:justify-between group">
+                        <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 flex items-center justify-center w-12 h-12 rounded-full border-4 border-slate-900 bg-pink-500 text-white font-bold text-lg z-10 shadow-lg shadow-pink-500/50">5</div>
+                        <div class="ml-16 md:ml-0 md:w-[calc(50%-3rem)] bg-slate-800 p-6 rounded-2xl border border-slate-700 shadow-xl ring-2 ring-pink-500/50 group-hover:-translate-y-1 transition-transform duration-300">
+                            <span class="text-pink-400 text-sm font-bold uppercase tracking-wider">Bitiş</span>
+                            <h4 class="text-xl font-bold text-white mt-1 mb-2">Genel Değerlendirme</h4>
+                            <p class="text-slate-300 text-sm leading-relaxed">Dikkat! Bu aşama Bloom'un değerlendirmesi DEĞİLDİR. Bu, tüm eğitim sürecinin ölçme ve değerlendirmesidir. Portfolyo, performans veya öz/akran değerlendirmeleri yapılır.</p>
+                        </div>
+                        <div class="hidden md:block md:w-[calc(50%-3rem)]"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-8 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                </div>
+                <span class="font-bold text-slate-900">Eğitim<span class="text-indigo-600">Genie</span></span>
+            </div>
+            <p class="text-sm text-slate-500 text-center">Zeynep Salman İçli & Metin Hoca'nın Ders Notlarından Esinlenerek Hazırlanmıştır.</p>
+            <p class="text-sm text-slate-400">© 2026 Web-Genie</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Pyramid Tab Switching Logic
+        function switchLevel(levelId) {
+            const levels = ['A', 'B', 'C'];
+            
+            levels.forEach(id => {
+                const btn = document.getElementById(`btn-${id}`);
+                const content = document.getElementById(`content-${id}`);
+                
+                if (id === levelId) {
+                    btn.classList.remove('tab-inactive');
+                    btn.classList.add('tab-active');
+                    content.classList.remove('hidden');
+                } else {
+                    btn.classList.add('tab-inactive');
+                    btn.classList.remove('tab-active');
+                    content.classList.add('hidden');
+                }
+            });
+        }
+
+        // Mobile Menu Toggle Logic
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
